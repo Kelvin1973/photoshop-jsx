@@ -1,0 +1,24 @@
+// Tạo một document mới (nếu cần) hoặc lấy document đang mở
+var docRef = app.documents.add(800, 600); // Thay đổi kích thước nếu cần
+
+// Tạo một layer văn bản mới
+var textLayer = docRef.artLayers.add();
+textLayer.kind = LayerKind.TEXT;
+
+// Lấy ngày hiện tại và định dạng
+var today = new Date();
+var dateString = today.toLocaleDateString();
+
+// Thiết lập các thuộc tính cho lớp văn bản
+var options = new TextOptions();
+options.fontSize = 24;
+options.fontFamily = "Arial";
+options.color = new RGBColor(0, 0, 0); // Màu đen
+
+// Thêm văn bản vào layer
+var textItem = textLayer.textItem;
+textItem.contents = dateString;
+textItem.position = new Array(100, 100); // Vị trí bắt đầu của văn bản
+
+// Đưa layer văn bản lên trên cùng
+textLayer.move(undefined, ElementPlacement.PLACEATEND);
